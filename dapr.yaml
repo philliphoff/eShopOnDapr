@@ -1,0 +1,15 @@
+apps:
+- appDirPath: ./src/Services/Catalog/Catalog.API
+  appID: catalog-api
+  appPort: 5000
+  command:
+  - dotnet
+  - run
+  env:
+    ASPNETCORE_ENVIRONMENT: Development
+    ASPNETCORE_URLS: http://0.0.0.0:5001
+    RetryMigrations: "true"
+    SeqServerUrl: http://localhost:5340
+common:
+  resourcesPath: ./dapr/components
+version: 1
