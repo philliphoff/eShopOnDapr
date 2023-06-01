@@ -47,6 +47,15 @@ apps:
     IdentityUrl: http://localhost:5105
     IdentityUrlExternal: http://localhost:5105
     RetryMigrations: "true"
+- appDirPath: ./src/Services/Payment/Payment.API
+  appID: payment-api
+  appPort: 5108
+  command:
+  - dotnet
+  - run
+  - --no-launch-profile
+  env:
+    ASPNETCORE_URLS: http://localhost:5108
 common:
   env:
     ASPNETCORE_ENVIRONMENT: Development
