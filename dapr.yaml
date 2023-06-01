@@ -35,6 +35,18 @@ apps:
     BasketApiUrlExternal: http://localhost:5103
     OrderingApiUrlExternal: http://localhost:5102
     ShoppingAggregatorApiUrlExternal: http://localhost:5121
+- appDirPath: ./src/Services/Ordering/Ordering.API
+  appID: ordering-api
+  appPort: 5102
+  command:
+  - dotnet
+  - run
+  - --no-launch-profile
+  env:
+    ASPNETCORE_URLS: http://localhost:5102
+    IdentityUrl: http://localhost:5105
+    IdentityUrlExternal: http://localhost:5105
+    RetryMigrations: "true"
 common:
   env:
     ASPNETCORE_ENVIRONMENT: Development
