@@ -10,6 +10,16 @@ apps:
     ASPNETCORE_URLS: http://localhost:5103
     IdentityUrl: http://localhost:5105
     IdentityUrlExternal: http://localhost:5105
+- appDirPath: ./src/Web/BlazorClient.Host
+  appID: blazor-client
+  command:
+  - dotnet
+  - run
+  - --no-launch-profile
+  env:
+    ASPNETCORE_URLS: http://localhost:5104
+    ApiGatewayUrlExternal: http://localhost:5202
+    IdentityUrlExternal: http://localhost:5105
 - appDirPath: ./src/Services/Catalog/Catalog.API
   appID: catalog-api
   appPort: 5101
@@ -56,6 +66,9 @@ apps:
   - --no-launch-profile
   env:
     ASPNETCORE_URLS: http://localhost:5108
+- appDirPath: ./src/ApiGateways/Envoy
+  appID: webshoppingapigw
+  daprHTTPPort: 5203
 common:
   env:
     ASPNETCORE_ENVIRONMENT: Development

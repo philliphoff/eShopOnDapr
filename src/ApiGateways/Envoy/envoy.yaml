@@ -122,21 +122,21 @@ static_resources:
     lb_policy: round_robin
     hosts:
     - socket_address:
-        address: 127.0.0.1
-        port_value: 3500
+        address: host.docker.internal
+        port_value: 5203
   - name: catalog
     connect_timeout: 0.25s
     type: strict_dns
     lb_policy: round_robin
     hosts:
     - socket_address:
-        address: ${ENVOY_CATALOG_API_ADDRESS}
-        port_value: 80
+        address: host.docker.internal
+        port_value: 5101
   - name: ordering-api
     connect_timeout: 0.25s
     type: strict_dns
     lb_policy: round_robin
     hosts:
     - socket_address:
-        address: ${ENVOY_ORDERING_API_ADDRESS}
-        port_value: 80
+        address: host.docker.internal
+        port_value: 5102
