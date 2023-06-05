@@ -66,6 +66,20 @@ apps:
   - --no-launch-profile
   env:
     ASPNETCORE_URLS: http://localhost:5108
+- appDirPath: ./src/ApiGateways/Aggregators/Web.Shopping.HttpAggregator
+  appID: webshoppingagg
+  appPort: 5121
+  command:
+  - dotnet
+  - run
+  - --no-launch-profile
+  env:
+    ASPNETCORE_URLS: http://localhost:5121
+    BasketUrlHC: http://localhost:5103/hc
+    CatalogUrlHC: http://localhost:5101/hc
+    IdentityUrlHC: http://localhost:5105/hc
+    IdentityUrl: http://localhost:5105
+    IdentityUrlExternal: http://localhost:5105
 - appDirPath: ./src/ApiGateways/Envoy
   appID: webshoppingapigw
   daprHTTPPort: 5203
