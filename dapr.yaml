@@ -5,41 +5,26 @@ apps:
   command:
   - dotnet
   - run
-  - --no-launch-profile
-  env:
-    ASPNETCORE_URLS: http://localhost:5103
-    IdentityUrl: http://localhost:5105
-    IdentityUrlExternal: http://localhost:5105
 - appDirPath: ./src/Web/BlazorClient.Host
   appID: blazor-client
   command:
   - dotnet
   - run
-  - --no-launch-profile
   env:
-    ASPNETCORE_URLS: http://localhost:5104
     ApiGatewayUrlExternal: http://localhost:5202
-    IdentityUrlExternal: http://localhost:5105
 - appDirPath: ./src/Services/Catalog/Catalog.API
   appID: catalog-api
   appPort: 5101
   command:
   - dotnet
   - run
-  - --no-launch-profile
-  env:
-    ASPNETCORE_URLS: http://localhost:5101
-    RetryMigrations: "true"
 - appDirPath: ./src/Services/Identity/Identity.API
   appID: identity-api
   appPort: 5105
   command:
   - dotnet
   - run
-  - --no-launch-profile
   env:
-    ASPNETCORE_URLS: http://localhost:5105
-    RetryMigrations: "true"
     IssuerUrl: http://localhost:5105
     BlazorClientUrlExternal: http://localhost:5104
     BasketApiUrlExternal: http://localhost:5103
@@ -51,41 +36,30 @@ apps:
   command:
   - dotnet
   - run
-  - --no-launch-profile
-  env:
-    ASPNETCORE_URLS: http://localhost:5102
-    IdentityUrl: http://localhost:5105
-    IdentityUrlExternal: http://localhost:5105
-    RetryMigrations: "true"
 - appDirPath: ./src/Services/Payment/Payment.API
   appID: payment-api
   appPort: 5108
   command:
   - dotnet
   - run
-  - --no-launch-profile
-  env:
-    ASPNETCORE_URLS: http://localhost:5108
 - appDirPath: ./src/ApiGateways/Aggregators/Web.Shopping.HttpAggregator
   appID: webshoppingagg
   appPort: 5121
   command:
   - dotnet
   - run
-  - --no-launch-profile
   env:
-    ASPNETCORE_URLS: http://localhost:5121
     BasketUrlHC: http://localhost:5103/hc
     CatalogUrlHC: http://localhost:5101/hc
     IdentityUrlHC: http://localhost:5105/hc
-    IdentityUrl: http://localhost:5105
-    IdentityUrlExternal: http://localhost:5105
 - appDirPath: ./src/ApiGateways/Envoy
   appID: webshoppingapigw
   daprHTTPPort: 5203
 common:
   env:
-    ASPNETCORE_ENVIRONMENT: Development
+    IdentityUrl: http://localhost:5105
+    IdentityUrlExternal: http://localhost:5105
+    RetryMigrations: "true"
     SeqServerUrl: http://localhost:5340
-  resourcesPath: ./dapr/components
+  resourcesPaths: [ ./dapr/components ]
 version: 1
